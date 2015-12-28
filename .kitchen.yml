@@ -1,18 +1,29 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: gramsay_bot
+  region: us-east-1
+  security_group_ids: sg-e5bafc83
+  subnet_id: subnet-977469ce
+  availability_zone: us-east-1a
+  instance_type: t2.micro
+  tags:
+    # Replace YOURNAME and YOURCOMPANY here
+    Name: "Chef Training Node for davstacy, AWS Chef Training"
+    created-by: "test-kitchen"
+    user: <%= ENV['USER'] %>
 
 provisioner:
   name: chef_zero
-
-# Uncomment the following verifier to leverage Inspec instead of Busser (the
-# default verifier)
-# verifier:
-#   name: inspec
+  cookbook_path: C:\Users\Administrator\chef-repo\cookbooks
 
 platforms:
-  - name: ubuntu-14.04
-  - name: centos-7.1
+  - name: linux
+    driver_config:
+      image_id: ami-61bbf104
+    transport:
+      username: centos
+      ssh_key: C:\Users\Administrator\.ssh\gramsay_bot.pem
 
 suites:
   - name: default
