@@ -6,3 +6,5 @@ else
   set :backend, :cmd
   set :os, family: 'windows'
 end
+
+#at_exit { ChefSpec::Coverage.report! }

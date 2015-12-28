@@ -12,7 +12,10 @@ file '/var/www/html/index.html' do
   owner 'root'
   group 'root'
   mode 00755
-  content 'hello world!'
+  content '
+54.86.147.175
+ip-10-100-20-235
+'
   action :create
 end
 
